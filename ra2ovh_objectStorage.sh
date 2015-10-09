@@ -1,6 +1,19 @@
-echo "Please enter your Runabove Password: "
+function usage {
+    echo "[!] Usage: ./ra2ovh_objectStorage.sh [operation]"
+    echo "[!] Operations:"
+    echo "[!]   sync : do sync containers"
+    echo "[!]   compare : compare containers"
+    exit
+}
+
+if [ "$1" == "help" -o "$1" == "" ]
+then
+    usage
+fi
+
+echo "[?] Please enter your Runabove Password: "
 read -sr RA_PASS
-echo "Please enter your Runabove Ovh Password: "
+echo "[?] Please enter your Ovh Password: "
 read -sr OVH_PASS
 
 function ra {
@@ -19,12 +32,29 @@ ra
 CONTAINERS=`swift list`
 while read -r container
 do 
-    echo "Container: $container"
-    sharedKey=$(openssl rand -base64 32) 
-    ovh
-    swift post --sync-key "$sharedKey" $container
-    destContainer=$(swift --debug stat $container 2>&1 | grep 'curl -i.*storage' | awk '{ print $4 }') 
-    ra
-    swift post --sync-key "$sharedKey" --sync-to "$destContainer" $container     
-    echo "Sync from RA:$container to OVH:$destContainer"
+    echo "[!] Container: $container"
+    if [ "$1" == "compare" ]
+    then
+        ra
+        ra_objs=`swift list $container`
+        ovh
+        ovh_objs=`swift list $container`
+        if [ "$ra_objs" = "$ovh_objs" ]
+        then
+            echo "[+] Synchronized"
+        else
+            echo "[-] Not synchronized"
+        fi       
+    elif [ "$1" == "sync" ]
+    then
+        sharedKey=$(openssl rand -base64 32) 
+        ovh
+        swift post --sync-key "$sharedKey" $container
+        destContainer=$(swift --debug stat $container 2>&1 | grep 'curl -i.*storage' | awk '{ print $4 }') 
+        ra
+        swift post --sync-key "$sharedKey" --sync-to "$destContainer" $container     
+        echo "[+] Sync from RA:$container to OVH:$destContainer"
+    else
+        usage
+    fi
 done <<< "$CONTAINERS" 

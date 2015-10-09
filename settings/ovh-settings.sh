@@ -1,0 +1,5 @@
+export OS_AUTH_URL="https://auth.cloud.ovh.net/v2.0"
+export OS_TENANT_ID=""
+export OS_TENANT_NAME=""
+export OS_USERNAME=""
+export TARGET_REGION="SBG1"

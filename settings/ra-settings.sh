@@ -1,0 +1,5 @@
+export OS_AUTH_URL="https://auth.runabove.io/v2.0"
+export OS_TENANT_ID=""
+export OS_TENANT_NAME=""
+export OS_USERNAME=""
+export SOURCE_REGION="SBG-1"

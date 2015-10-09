@@ -11,10 +11,16 @@ then
     usage
 fi
 
-echo "[?] Please enter your Runabove Password: "
-read -sr RA_PASS
-echo "[?] Please enter your Ovh Password: "
-read -sr OVH_PASS
+if [ "$RA_PASS" == "" ]
+then
+    echo "[?] Please enter your Runabove Password: "
+    read -sr RA_PASS
+fi
+if [ "$OVH_PASS" == "" ]
+then
+    echo "[?] Please enter your Ovh Password: "
+    read -sr OVH_PASS
+fi
 
 function ra {
     source ./settings/ra-settings.sh

@@ -13,8 +13,8 @@ While, to get the ovh's one you have to create a [new openstack user](https://ww
 
 ## Usage
 1. Clone this repo
-2. Configure settings/ra-settings.sh and settings/ovh-settings.sh with the data you find inside openrc.sh files 
-3. Run ./ra2ovh_objectStorage.sh sync
+2. Configure `settings/ra-settings.sh` and `settings/ovh-settings.sh` with the data you find inside `openrc.sh` files 
+3. Run `./ra2ovh_objectStorage.sh sync`
 4. Input required passwords
 5. Wait until the script ends
 

@@ -16,4 +16,5 @@ While, to get the ovh's one you have to create a [new openstack user](https://ww
 2. Configure settings/ra-settings.sh and settings/ovh-settings.sh with the data you find inside openrc.sh files 
 3. Run ra2ovh_objectStorage.sh 
 4. Wait until the script ends
+5. 
 The script will create missing containers on ovh and will configure them to be syncronized with ra ones, after a while, if everything went correctly, you should see runabove starting to upload stuff to your ovh account.

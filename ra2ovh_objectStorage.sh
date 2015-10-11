@@ -50,7 +50,7 @@ do
         ra_objs=`swift list $container`
         mapfile -t ra_objs <<< "$ra_objs"
         ovh
-        ovh_objs==`swift list $container`
+        ovh_objs=`swift list $container`
         mapfile -t ovh_objs <<< "$ovh_objs"
         sync=1
         for o in "${ra_objs[@]}"

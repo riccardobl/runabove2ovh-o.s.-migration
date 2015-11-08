@@ -9,7 +9,7 @@ Plus you need the ovh and runabove openrc.sh files.
 
 You can find the runabove rc file inside `Horizon -> Access & Security -> API Access -> Download OpenStack RC file`.
 
-While, to get the ovh's one you have to create a [new openstack user](https://www.ovh.com/fr/publiccloud/guides/g1773.creer_un_acces_a_horizon) inside `Gestion et conso. du projet` and then click the little sheet icon next to it.
+While, to get the ovh's one you have to create a [new openstack user](https://www.ovh.com/fr/publiccloud/guides/g1773.creer_un_acces_a_horizon) inside `Project management and consolidation` and then click the little wrench icon next to it and then `Downloading an Openstack configuration file`.
 
 ## Usage
 1. Clone this repo
